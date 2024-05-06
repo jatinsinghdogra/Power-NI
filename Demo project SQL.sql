@@ -14,13 +14,9 @@ SELECT SUM(total_price) AS Total_Revenuw FROM pizza_sales;
  
  -- Total Orders --
  SELECT COUNT(DISTINCT Order_id) AS Total_orders FROM pizza_sales;
-
--- Average orders per pizzas -- 
-SELECT CAST(CAST(SUM(quantity) AS DECIMAL(10,2))/
- CAST(COUNT(DISTINCT order_id) AS DECIMAL(10,2)) AS DECIMAl(10,2)) AS Avy_Pizza_Per_Order FROM pizza_sales;
  
  -- Perecntage of Sales by Pizza category --
-SELECT pizza_category, SUM(total_price) AS Total_sales, CAST(SUM(total_price)*100 / (SELECT SUM(total_price) FROM pizza_sales) AS DECIMAL(10,2)) AS Percentage_of_Sales
+SELECT pizza_category, SUM(total_price) AS Total_sales, (SUM(total_price)*100 / (SELECT SUM(total_price) FROM pizza_sales) AS DECIMAL(10,2)) AS Percentage_of_Sales
 FROM pizza_sales
 GROUP BY pizza_category;
 
