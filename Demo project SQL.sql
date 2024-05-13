@@ -20,11 +20,6 @@ SELECT pizza_category, SUM(total_price) AS Total_sales, (SUM(total_price)*100 / 
 FROM pizza_sales
 GROUP BY pizza_category;
 
--- Percentage of Sales by Pizza size --
-SELECT pizza_size, CAST(SUM(total_price) AS DECIMAL(10,2)),CAST(SUM(total_price)*100 / (SELECT SUM(total_price) FROM pizza_sales) AS DECIMAL(10,2))AS percentage_sales
-FROM pizza_sales
-GROUP BY pizza_size
-ORDER BY percentage_sales;
 
 -- Total Pizzas sold by pizza category --
 SELECT pizza_name, SUM(total_price) AS Total_revenue FROM pizza_sales
